@@ -13,7 +13,7 @@
     <div class="result">
 
         <div class="result-content">
-            <a href="index.html">Ajout un produit</a>
+            <a href="index.php">Ajout un produit</a>
 
             <h3>Liste des produits</h3>
             <div class="liste-produits">

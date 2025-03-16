@@ -1,13 +1,20 @@
 <?php
 include 'connexion.php';
 
+if (isset($_POST['btn-add'])) {
+    $nomproduit = $_POST['nomproduit'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
+
+    $sql = "INSERT INTO produit (titre, description, image) VALUES (:nomproduit, :description, :image)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['nomproduit' => $nomproduit, 'description' => $description, 'image' => $image]);
+    header('Location: resultat.php');
+    exit();
+} else {
+    echo 'Erreur lors de l\'ajout du produit';
+}
 ?>
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +37,9 @@ include 'connexion.php';
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
             <label for="image">Ajouter une image</label>
             <input type="file" name="image" id="image" required>
-            <input type="submit" value="Ajouter" name="send">
+            <input type="submit" value="Ajouter" name="btn-add">
 
-            <a class="btn-liste-prod" href="resultat.html">Liste des Produits</a>
+            <a class="btn-liste-prod" href="resultat.php">Liste des Produits</a>
         </form>
 
     </section>
