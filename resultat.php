@@ -18,52 +18,30 @@
             <h3>Liste des produits</h3>
             <div class="liste-produits">
 
-                <!-- Produit Liste -->
-                <div class="produit">
-                    <div class="image-prod">
-                        <img src="images/produit1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <strong>
-                            <p class="titre">Citron</p>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-                                fugiat
-                                ducimus culpa odit facere dolorum at perspiciatis porro, quaerat recusandae commodi odio
-                                quam, voluptas mollitia modi autem? Quasi, consequuntur ut.</p>
-                        </strong>
-                    </div>
-                </div>
-                <!-- Produit Liste -->
+                <?php
+                include 'connexion.php';
+                $sql = "SELECT * FROM produit";
+                $stmt = $pdo->query($sql);
+                $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($produits as $produit) {
+                ?>
 
-                <div class="produit">
-                    <div class="image-prod">
-                        <img src="images/produit1.jpg" alt="">
+                    <!-- Produit Liste -->
+                    <div class="produit">
+                        <div class="image-prod">
+                            <img src="<?php echo $produit['image']; ?>" alt="">
+                        </div>
+                        <div class="text">
+                            <strong>
+                                <p class="titre"> <?php echo $produit['titre']; ?></p>
+                                <p class="description"><?php echo $produit['description']; ?></p>
+                            </strong>
+                        </div>
                     </div>
-                    <div class="text">
-                        <strong>
-                            <p class="titre">Citron</p>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-                                fugiat
-                                ducimus culpa odit facere dolorum at perspiciatis porro, quaerat recusandae commodi odio
-                                quam, voluptas mollitia modi autem? Quasi, consequuntur ut.</p>
-                        </strong>
-                    </div>
-                </div>
-                <!-- Produit Liste -->
-                <div class="produit">
-                    <div class="image-prod">
-                        <img src="images/produit1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <strong>
-                            <p class="titre">Citron</p>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-                                fugiat
-                                ducimus culpa odit facere dolorum at perspiciatis porro, quaerat recusandae commodi odio
-                                quam, voluptas mollitia modi autem? Quasi, consequuntur ut.</p>
-                        </strong>
-                    </div>
-                </div>
+
+                <?php
+                }
+                ?>
             </div>
         </div>
 
